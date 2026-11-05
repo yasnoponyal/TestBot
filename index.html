@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мое Mini App</title>
+    <!-- Обязательный скрипт для связи с Telegram -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        /* CSS переменные --tg-* берут цвета напрямую из настроек Telegram пользователя */
+        body {
+            background-color: var(--tg-theme-bg-color, #ffffff);
+            color: var(--tg-theme-text-color, #000000);
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        button {
+            background-color: var(--tg-theme-button-color, #3390ec);
+            color: var(--tg-theme-button-text-color, #ffffff);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Привет, мир!</h1>
+    <p>Это полноценное веб-приложение внутри Telegram.</p>
+    <button id="closeBtn">Закрыть окно</button>
+
+    <script>
+        // Инициализируем объект WebApp
+        const tg = window.Telegram.WebApp;
+
+        // Сообщаем Telegram, что приложение полностью загружено
+        tg.ready();
+
+        // Привязываем действие к кнопке
+        document.getElementById("closeBtn").addEventListener("click", () => {
+            // При нажатии просто закрываем Mini App
+            tg.close();
+        });
+    </script>
+</body>
+
+</html>
